@@ -29,7 +29,8 @@ public class LoadImage {
 	/*
 	 * calcHorizont() räknar ut data angående bildens horisont (lutning, och en tänkt linjes y-koordinater 
 	 * vid höger och vänster kant) och returnerar detta i form av ett HorizontLineobjekt.
-	 * TODO ej testad!
+	 * 
+	 * TODO Ej testad! Bör göras.
 	 */
 	
 	public HorizontLine calcHorizont(){
