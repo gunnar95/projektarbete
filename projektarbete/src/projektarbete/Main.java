@@ -1,3 +1,8 @@
+/*
+ * Mainklass, för att testa delar av och köra programmet.
+ */
+
+
 package projektarbete;
 
 import java.io.IOException;

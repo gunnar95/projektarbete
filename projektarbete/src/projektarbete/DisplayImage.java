@@ -1,3 +1,9 @@
+/*
+ * Laddar in en BufferedImage genom LoadImage.getImage() 
+ * och renderar den sedan i en JFrame som anpassar storleken efter bilden.
+ */
+
+
 package projektarbete;
 
 import java.awt.Graphics;
