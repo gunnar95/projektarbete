@@ -7,40 +7,87 @@
 
 package projektarbete;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+
 public class HorizontLine {
 	
-	private int leftY;
-	private int rightY;
-	private int width;
-	private double angle;
+	private BufferedImage img = null;
 	
-	public HorizontLine(int leftY, int rightY, int width) {
-		this.leftY = leftY;
-		this.rightY = rightY;
-		angle = calcAngle();
+	Line line = null;
+
+	private int leftX;
+	private int leftY;
+	private int rigthX;
+	private int rightY;
+	
+	public HorizontLine(BufferedImage image) {
+		this.img = image;
+		
+		line = HorizontLine.calcHorizont(img);
+		this.leftX = line.getLeftX();
+		this.leftY = line.getLeftY();
+		this.rigthX = line.getRightX();
+		this.rightY = line.getRightY();
 	}
 	
-	private double calcAngle(){
-		int deltaY = leftY - rightY;
+	private static Line calcHorizont(BufferedImage img){
 		
-		double angle = Math.tanh(deltaY / width);
+		int leftAvg = 0;
+		int rightAvg = 0;
 		
-		return angle;
+		
+		for(int i = 0; i <= 3; i++){
+			for(int u = 1; u <= img.getHeight(); u++){
+				boolean isWhite = true;
+				
+				while(isWhite){
+					if(img.getRGB(i, u) == Color.BLACK.getRGB()){
+						leftAvg += u;
+						isWhite = false;
+					}
+				}
+			}
+		}
+		
+		for(int i = 0; i <= 3; i++){
+			for(int u = 1; u <= img.getHeight(); u++){
+				boolean isWhite = true;
+				
+				while(isWhite){
+					if(img.getRGB(255 - i, u) == Color.BLACK.getRGB()){
+						rightAvg += u;
+						isWhite = false;
+					}
+				}
+			}
+		}
+		
+		leftAvg /= 4;
+		rightAvg /= 4;
+		
+		leftAvg -= 10;			//Drar av 10 pixlar för större felmariginal
+		rightAvg -= 10;
+		
+		Line horizont = new Line(leftAvg, 0, rightAvg, img.getWidth());
+		
+		return horizont;
+	}
+	
+	public int getLeftX() {
+		return leftX;
 	}
 
 	public int getLeftY() {
 		return leftY;
 	}
 
+	public int getRigthX() {
+		return rigthX;
+	}
+
 	public int getRightY() {
 		return rightY;
 	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public double getAngle() {
-		return angle;
-	}
+	
 }

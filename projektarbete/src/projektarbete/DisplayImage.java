@@ -6,6 +6,7 @@
 
 package projektarbete;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -36,6 +37,12 @@ public class DisplayImage extends JFrame {
 	
 	public void paint(Graphics g){
 		g.drawImage(img, xBorderSize, yBorderSize, null);
+		HorizontLine line = new HorizontLine(img);
+		g.setColor(Color.RED);
+		
+		System.out.println((line.getLeftX() + line.getLeftY() + line.getRigthX() + line.getRightY()));
+		
+		g.drawLine(line.getLeftX(), line.getLeftY(), line.getRigthX(), line.getRightY());
 	}
 	
 }

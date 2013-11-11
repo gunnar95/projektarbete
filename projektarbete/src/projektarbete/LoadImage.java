@@ -33,48 +33,6 @@ public class LoadImage {
 	 * TODO Ej testad! Bör göras.
 	 */
 	
-	public HorizontLine calcHorizont(){
-		
-		int leftAvg = 0;
-		int rightAvg = 0;
-		
-		
-		int[] columns = new int[8];
-		for(int i = 0; i <= 3; i++){
-			for(int u = 1; u <= img.getHeight(); u++){
-				boolean isWhite = true;
-				
-				while(isWhite){
-					if(img.getRGB(i, u) == Color.BLACK.getRGB()){
-						leftAvg += u;
-						isWhite = false;
-					}
-				}
-			}
-		}
-		
-		for(int i = 0; i <= 3; i++){
-			for(int u = 1; u <= img.getHeight(); u++){
-				boolean isWhite = true;
-				
-				while(isWhite){
-					if(img.getRGB(255 - i, u) == Color.BLACK.getRGB()){
-						rightAvg += u;
-						isWhite = false;
-					}
-				}
-			}
-		}
-		
-		leftAvg /= 4;
-		rightAvg /= 4;
-		
-		leftAvg -= 10;			//Drar av 10 pixlar för större felmariginal
-		rightAvg -= 10;
-		
-		HorizontLine horizont = new HorizontLine(leftAvg, rightAvg, img.getWidth());
-		
-		return horizont;
-	}
+
 }
 
