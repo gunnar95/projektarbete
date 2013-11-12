@@ -40,7 +40,7 @@ public class DisplayImage extends JFrame {
 		HorizontLine line = new HorizontLine(img);
 		g.setColor(Color.RED);
 		
-		System.out.println((line.getLeftX() + line.getLeftY() + line.getRigthX() + line.getRightY()));
+		
 		
 		g.drawLine(line.getLeftX(), line.getLeftY(), line.getRigthX(), line.getRightY());
 	}

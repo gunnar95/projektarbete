@@ -38,28 +38,28 @@ public class HorizontLine {
 		
 		
 		for(int i = 0; i <= 3; i++){
-			for(int u = 1; u <= img.getHeight(); u++){
-				boolean isWhite = true;
-				
-				while(isWhite){
-					if(img.getRGB(i, u) == Color.BLACK.getRGB()){
-						leftAvg += u;
-						isWhite = false;
-					}
+			int yPos = 100;
+			boolean isWhite = true;
+			while(isWhite){
+				if(img.getRGB(255 - i, yPos) == Color.BLACK.getRGB()){
+					leftAvg += yPos;
+					isWhite = false;
 				}
+				yPos++;
 			}
 		}
 		
+		
 		for(int i = 0; i <= 3; i++){
-			for(int u = 1; u <= img.getHeight(); u++){
-				boolean isWhite = true;
-				
-				while(isWhite){
-					if(img.getRGB(255 - i, u) == Color.BLACK.getRGB()){
-						rightAvg += u;
-						isWhite = false;
-					}
+			int yPos = 100;
+			boolean isWhite = true;
+			while(isWhite){
+				if(img.getRGB(255 - i, yPos) == Color.BLACK.getRGB()){
+					rightAvg += yPos;
+					isWhite = false;
+					
 				}
+				yPos++;
 			}
 		}
 		
@@ -69,7 +69,8 @@ public class HorizontLine {
 		leftAvg -= 10;			//Drar av 10 pixlar för större felmariginal
 		rightAvg -= 10;
 		
-		Line horizont = new Line(leftAvg, 0, rightAvg, img.getWidth());
+		
+		Line horizont = new Line(0, leftAvg, img.getWidth(), rightAvg);
 		
 		return horizont;
 	}
