@@ -40,9 +40,11 @@ public class HorizontLine {
 		for(int i = 0; i <= 3; i++){
 			int yPos = 100;
 			boolean isWhite = true;
-			while(isWhite){
-				if(img.getRGB(255 - i, yPos) == Color.BLACK.getRGB()){
+			while(isWhite && (yPos < img.getHeight())){
+				System.out.println(yPos + " " + getRGBAvg(img.getRGB((255 - i), yPos)) + " " + getRGBAvg(img.getRGB((255 - i), yPos + 1)));
+				if(getRGBAvg(img.getRGB((255 - i), yPos)) < 250 && img.getRGB((255 - i), yPos + 1) < 5){
 					leftAvg += yPos;
+
 					isWhite = false;
 				}
 				yPos++;
@@ -53,9 +55,10 @@ public class HorizontLine {
 		for(int i = 0; i <= 3; i++){
 			int yPos = 100;
 			boolean isWhite = true;
-			while(isWhite){
-				if(img.getRGB(255 - i, yPos) == Color.BLACK.getRGB()){
+			while(isWhite && (yPos < img.getHeight())){
+				if(getRGBAvg(img.getRGB((255 - i), yPos)) < 5){
 					rightAvg += yPos;
+
 					isWhite = false;
 					
 				}
@@ -73,6 +76,18 @@ public class HorizontLine {
 		Line horizont = new Line(0, leftAvg, img.getWidth(), rightAvg);
 		
 		return horizont;
+	}
+	
+	public static int getRGBAvg(int i){
+		Color c = new Color(i);
+		
+		int r = c.getRed();
+		int g = c.getGreen();
+		int b = c.getBlue();
+		
+		int avgRGB = (r + b + g) / 3;
+		
+		return avgRGB;
 	}
 	
 	public int getLeftX() {

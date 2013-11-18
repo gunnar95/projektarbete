@@ -41,7 +41,7 @@ public class DisplayImage extends JFrame {
 		g.setColor(Color.RED);
 		
 		
-		
+		System.out.printf("%d    %d    %d    %d", line.getLeftX(), line.getLeftY(), line.getRigthX(), line.getRightY());
 		g.drawLine(line.getLeftX(), line.getLeftY(), line.getRigthX(), line.getRightY());
 	}
 	
