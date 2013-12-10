@@ -37,12 +37,12 @@ public class DisplayImage extends JFrame {
 	
 	public void paint(Graphics g){
 		g.drawImage(img, xBorderSize, yBorderSize, null);
-		HorizontLine line = new HorizontLine(img);
+		//HorizontLine line = new HorizontLine(img);
 		g.setColor(Color.RED);
 		
 		
-		System.out.printf("%d    %d    %d    %d", line.getLeftX(), line.getLeftY(), line.getRigthX(), line.getRightY());
-		g.drawLine(line.getLeftX(), line.getLeftY(), line.getRigthX(), line.getRightY());
+		//System.out.printf("%d    %d    %d    %d", line.getLeftX(), line.getLeftY(), line.getRigthX(), line.getRightY());
+		//g.drawLine(line.getLeftX(), line.getLeftY(), line.getRigthX(), line.getRightY());
 	}
 	
 }
